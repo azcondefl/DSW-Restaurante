@@ -10,7 +10,7 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 Lo primero es descargar el repositorio utilizando el siguiente comando:
 
 ```
-    git clone https://github.com/yaairnaavaa/books-api.git
+    git clone https://github.com/azcondefl/DSW-Restaurante.git
 ```
 
 ### Pre-requisitos 📋
