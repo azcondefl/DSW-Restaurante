@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
+<<<<<<< Updated upstream
 const pedidosController = require('../controllers/pedidos.controller');
+=======
+const pedidosController = require('../controllers/pedido.controller');
+>>>>>>> Stashed changes
 const authMiddleware = require('../utils/auth.middleware');
 
 // /orders: Crear un nuevo pedido.
