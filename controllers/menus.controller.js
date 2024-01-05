@@ -1,5 +1,4 @@
 const Menu = require('../models/menu.model');
-const Categoria = require('../models/categoria.model');
 
 //Lista de todos los platos disponibles.
 exports.getMenus = async (req, res) => {
@@ -21,9 +20,11 @@ exports.getMenus = async (req, res) => {
     }
 };
 
-exports.newMenu = (req,res) => {
+exports.newMenu = async (req,res) => {
     try{
-        const newMenu = req.body;
+        const {name, categoria, ingredientes, descripcion, precio, img} = req.body;
+        const newMenu = new Book({name, categoria, ingredientes, descripcion, precio, img});
+        await newMenu.save();
         return res.status(200).json(
             {
                 message: "Platillo creado",
@@ -33,12 +34,13 @@ exports.newMenu = (req,res) => {
     }catch (error){
         return res.status(500).json(
             {
-                message: "Error al crear el platillo",
+                message: "Error al agregar platillo",
                 data: error
             }
         );
     }
 }
+
 
 // Detalles de un plato específico por su ID.
 exports.getMenuById = async (req, res) => {
