@@ -21,24 +21,22 @@ exports.getMenus = async (req, res) => {
     }
 };
 
-exports.newMenu = (req,res) => {
-    try{
-        const newMenu = req.body;
-        return res.status(200).json(
-            {
-                message: "Platillo creado",
-                data: newMenu
-            }
-        );
-    }catch (error){
-        return res.status(500).json(
-            {
-                message: "Error al crear el platillo",
-                data: error
-            }
-        );
+exports.newMenu = async (req, res) => {
+    try {
+        const { name, categoria, ingredientes, descripcion, precio, img } = req.body;
+        const newMenu = new Menu({ name, categoria, ingredientes, descripcion, precio, img });
+        await newMenu.save();
+        return res.status(200).json({
+            message: "Platillo creado",
+            data: newMenu
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error al agregar platillo",
+            data: error
+        });
     }
-}
+};
 
 // Detalles de un plato específico por su ID.
 exports.getMenuById = async (req, res) => {
