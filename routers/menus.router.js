@@ -9,10 +9,11 @@ router.get('/menu', menusController.getMenus);
 // /menu/{id}: Detalles de un plato específico por su ID.
 router.get('/menu/:Id', menusController.getMenuById);
 
-// /menu/categorias: Lista de categorías de platos (sushi, sashimi, ramen, etc.).
-router.get('/menu/:categorias', menusController.getCategorias);
+router.post('/', menusController.newMenu);
 
-// /menu/category/{category_name}: Platos filtrados por una categoría específica.
-router.get('/menu/categoria/:category_name', menusController.getMenuByCat);
+router.put('/:menuId',menusController.updateMenu);
+
+router.delete('/:menuId', menusController.deleteMenu);
+
 
 module.exports = router;
