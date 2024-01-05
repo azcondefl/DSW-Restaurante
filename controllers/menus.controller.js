@@ -21,25 +21,6 @@ exports.getMenus = async (req, res) => {
     }
 };
 
-exports.newMenu = (req,res) => {
-    try{
-        const newMenu = req.body;
-        return res.status(200).json(
-            {
-                message: "Platillo creado",
-                data: newMenu
-            }
-        );
-    }catch (error){
-        return res.status(500).json(
-            {
-                message: "Error al crear el platillo",
-                data: error
-            }
-        );
-    }
-}
-
 // Detalles de un plato específico por su ID.
 exports.getMenuById = async (req, res) => {
     const menuId = req.params.menuId;
@@ -61,45 +42,41 @@ exports.getMenuById = async (req, res) => {
     }
 };
 
-exports.updateMenu = (req,res) => {
-    try{
-        const menuId = req.params.menuId;
-        const newMenu = req.body;
-
-        return res.status(201).json(
-            {
-                message: "Actualizar platillo por ID: "+menuId,
-                data: updateMenu
-            }
-        );
-    }catch (error){
-        return res.status(500).json(
-            {
-                message: "Error al actualizar",
-                data: error
-            }
-        );
-    }
-}
-
-
-exports.deleteMenu = (req,res) => {
-    try{
-        const menuId = req.params.menuId;
+// Lista de categorías de platos (sushi, sashimi, ramen, etc.).
+exports.getCategorias = async (req, res) => {
+    try {
+        const categorias = await Categoria.find();
         return res.status(200).json(
             {
-                message: "Platillo eliminado con ID: "+menuId
+                message: 'Categorias obtenidas con éxito',
+                data: categorias
             }
         );
-    }catch (error){
+    } catch (error) {
         return res.status(500).json(
             {
-                message: "Error al eliminar platillo",
+                message: 'Error al consultar categorias',
                 data: error
             }
         );
     }
-}
+};
 
+// Platos filtrados por una categoría específica.
+exports.getMenuByCat = async (req, res) => {
+    const menuCat = req.params.menuCat;
+    try {
+        const menu = await Menu.find({ categoria: menuCat });
+        return res.status(200).json({
+            message: 'Menú por categoría obtenido con éxito',
+            data: menu
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error al consultar menú por categoría',
+            data: error
+        });
+    }
+};
 
 
