@@ -81,12 +81,13 @@ exports.updateMenu = (req,res) => {
 }
 
 
-exports.deleteMenu = (req,res) => {
+exports.deleteMenu = async (req,res) => {
+    const menuId = req.params.menuId;
     try{
-        const menuId = req.params.menuId;
+        await Menu.findByIdAndDelete(menuId);
         return res.status(200).json(
             {
-                message: "Platillo eliminado con ID: "+menuId
+                message: "Platillo eliminado con ID: "+bookId
             }
         );
     }catch (error){
