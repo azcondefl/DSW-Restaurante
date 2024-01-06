@@ -59,15 +59,15 @@ exports.getMenuById = async (req, res) => {
     }
 };
 
-exports.updateMenu = (req,res) => {
+exports.updateMenu = async (req,res) => {
+    const menuId = req.params.menuId;
+    const newData = req.body;
     try{
-        const menuId = req.params.menuId;
-        const newMenu = req.body;
-
+        const updateMenu = await Menu.findByIdAndUpdate(menuId, newData, {new: true});
         return res.status(201).json(
             {
-                message: "Actualizar platillo por ID: "+menuId,
-                data: updateMenu
+                message: "Actualizar platillo por ID: ",
+                data: updateMenu 
             }
         );
     }catch (error){
