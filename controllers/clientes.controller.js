@@ -81,7 +81,7 @@ exports.updateClientes = async (req,res) => {
 }
 
 
-exports.deleteCliente = async (req,res) => {
+exports.deleteClientes = async (req,res) => {
     const clientesId = req.params.clientesId;
     try{
         await Clientes.findByIdAndDelete(clientesId);

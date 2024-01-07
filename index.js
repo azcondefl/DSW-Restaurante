@@ -5,6 +5,7 @@ require('./utils/mongoConnection');
 
 const menusRouter = require('./routers/menus.router');
 const usersRouter = require('./routers/users.router');
+const clientesRouter = require('./routers/clientes.router');
 
 const app = express();
 const port = 3003;

@@ -6,7 +6,7 @@ const authMiddleware = require('../utils/auth.middleware');
 // /clientes: Lista de todos los clientes disponibles.
 router.get('/clientes', clientesController.getClientes);
 
-// /clientes/{id}: Detalles de un cliente específico por su ID.
+// /clientes/{id}: Detalles de un plato específico por su ID.
 router.get('/clientes/:Id', clientesController.getClientesById);
 
 router.post('/', clientesController.newClientes);
