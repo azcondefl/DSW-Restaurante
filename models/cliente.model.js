@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let menuSchema = new mongoose.Schema({
+let clientesSchema = new mongoose.Schema({
     nombres: {type: String},
     aPaterno: {type: String},
     aMaterno: {type: String},

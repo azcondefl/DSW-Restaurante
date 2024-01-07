@@ -4,7 +4,7 @@ const Clientes = require('../models/clientes.model');
 //Lista de todos los clientes disponibles.
 exports.getClientes = async (req, res) => {
     try {
-        const clientes = await Menu.find();
+        const clientes = await Clientes.find();
         return res.status(200).json(
             {
                 message: 'Clientes obtenidos con éxito',
