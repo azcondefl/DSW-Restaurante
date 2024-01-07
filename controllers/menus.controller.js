@@ -87,7 +87,7 @@ exports.deleteMenu = async (req,res) => {
         await Menu.findByIdAndDelete(menuId);
         return res.status(200).json(
             {
-                message: "Platillo eliminado con ID: "+bookId
+                message: "Platillo eliminado con ID: "+menuId
             }
         );
     }catch (error){
