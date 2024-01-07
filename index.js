@@ -27,6 +27,7 @@ app.use(express.json({limit: '50mb'}));
 
 app.use('/menus', menusRouter);
 app.use('/users', usersRouter);
+app.use('/clientes', usersRouter);
 
 app.listen(port, () => {
     console.log("Servidor iniciado en http://localhost:"+port);
