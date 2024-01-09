@@ -23,8 +23,8 @@ exports.getClientes = async (req, res) => {
 
 exports.newClientes = async (req, res) => {
     try {
-        const {nombres, aPaterno, aMaterno, fecNac } = req.body;
-        const newClientes = new Clientes({nombres, aPaterno, aMaterno, fecNac});
+        const {nombres, aPaterno, aMaterno, fecNac, telefono, direccion } = req.body;
+        const newClientes = new Clientes({nombres, aPaterno, aMaterno, fecNac, telefono, direccion});
         await newClientes.save();
         return res.status(200).json({
             message: "Cliente agregado",
